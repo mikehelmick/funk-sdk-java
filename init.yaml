@@ -1,0 +1,20 @@
+apiVersion: funk.knative.dev/v1alpha1
+kind: SDKInit
+metadata:
+  name: funk-java-sdk
+spec:
+  steps:
+    - name: "Create src directory"
+      mkdir: "src"
+    - name: "Create src/main directory"
+      mkdir: "src/main"
+    - name: "Create config directory"
+      mkdir: "config"
+    - name: "Create pom.xml file"
+      template:
+        source: "templates/init/pom.xml"
+        dest: "pom.xml"
+    - name: "Create README.md"
+      template:
+        source: "templates/init/README.md"
+        dest: "README.md"

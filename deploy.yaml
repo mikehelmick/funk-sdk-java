@@ -1,0 +1,21 @@
+apiVersion: funk.knative.dev/v1alpha1
+kind: SDKInit
+metadata:
+  name: funk-go-sdk-deploy
+spec:
+  steps:
+    - name: "Format go files"
+      exec: "gofmt -l -w ./"
+    - name: "Ensure dependencies"
+      exec: "dep ensure"
+    - name: "Build Functions and Deploy Functions/Triggers"
+      exec: "ko apply -f config"
+# To use buildpacks instead of ko, comment out the build step above and uncomment the steps below. 
+# This is a sample for the current funk demo. This will be more configurable and a separate build step will be added.
+#    - name: "Build to image"
+#      build:
+#        builder: "gcr.io/shef-gse/funk"
+#        dest: "gcr.io/shef-gse/funk-from-kn-deploy"
+#        main_path: "cmd/sayhello/main.go"
+#    - name: "Deploy Functions/Triggers"
+#      exec: "kubectl apply -f config"

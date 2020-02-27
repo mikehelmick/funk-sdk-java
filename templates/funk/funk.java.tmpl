@@ -1,0 +1,18 @@
+package com.example.funks;
+
+import {{.InType.PathDots}}.{{.InType.UpCaseTypeName}};
+
+import com.google.cloud.functions.BackgroundFunction;
+import com.google.cloud.functions.Context;
+
+import java.util.logging.Logger;
+
+public class {{.FunkName}} implements BackgroundFunction<{{.InType.UpCaseTypeName}}> {
+  private static final Logger logger =
+      Logger.getLogger({{.FunkName}}.class.getName());
+
+  @Override
+  public void accept({{.InType.UpCaseTypeName}} event, Context context) {
+    logger.info("Received message: " + event.toString());
+  }
+}

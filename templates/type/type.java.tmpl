@@ -7,6 +7,6 @@ package {{.PathDots}};
  * Powered by fun(k)
  */
 public class {{.UpCaseTypeName}} {
-  {{range .StructFields}} public {{if eq .FieldType "integer"}} int {{else if eq .FieldType "string"}} String {{else}} {{.FieldType}} {{end}} {{.Name}};
+  {{range .StructFields}} public {{if eq .FieldType "integer"}} int {{else if eq .FieldType "string"}} String {{else}} {{.FieldType}} {{end}} {{.SchemaName}};
   {{end}}
 }
